@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:clickable="true"
+    android:elevation="20dp"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="true"
+    card_view:cardElevation="10"
+    android:id="@+id/itemRepoCardView"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+
+            <ImageView
+                android:id="@+id/itemRepoLogoImgView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/itemRepoNameTx"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/itemRepoLogoImgView"
+                android:ellipsize="end"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textSize="20sp"
+                tools:text="TestingRepoTestingRepoTestingRepo" />
+
+            <TextView
+                android:id="@+id/itemRepoDescTx"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemRepoNameTx"
+                android:layout_toEndOf="@+id/itemRepoLogoImgView"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="15sp"
+                tools:text="Description for 2 lines, It will work fine! Hmm looks good dfgdfgdfgdfgdfgdfgd" />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/itemRepoCreatedAtTx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="15sp"
+            tools:text="11.11.2022" />
+
+        <TextView
+            android:id="@+id/itemRepoDownloadTx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:selectableItemBackground"
+            android:text="Загрузить"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -7,11 +7,13 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    val searchLiveData = MutableLiveData<String>()
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
 
@@ -31,8 +33,18 @@ class MainActivity : AppCompatActivity() {
 
         val search = menu?.findItem(R.id.nav_search)
         val searchView = search?.actionView as SearchView
-
         searchView.queryHint = "Поиск по имени"
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchLiveData.value = newText ?: ""
+                return true
+            }
+
+        })
 
         return super.onCreateOptionsMenu(menu)
     }

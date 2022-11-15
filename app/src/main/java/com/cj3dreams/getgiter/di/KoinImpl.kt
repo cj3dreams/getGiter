@@ -7,9 +7,11 @@ import com.cj3dreams.getgiter.source.local.AppDb
 import com.cj3dreams.getgiter.source.remote.GithubApiRequest
 import com.cj3dreams.getgiter.source.remote.RemoteSourceImpl
 import com.cj3dreams.getgiter.utils.AppConstants.BASE_URL
+import com.cj3dreams.getgiter.vm.ResultViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,4 +45,8 @@ val dataSourceModule = module {
 
     single { provideDatabase(androidApplication()) }
     single {provideDataRepository(get())}
+
+    viewModel {
+        ResultViewModel(get())
+    }
 }
