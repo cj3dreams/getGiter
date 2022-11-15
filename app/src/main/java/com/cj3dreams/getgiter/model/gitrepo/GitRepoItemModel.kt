@@ -1,6 +1,6 @@
 package com.cj3dreams.getgiter.model.gitrepo
 
-data class GitRepoResponseItem(
+data class GitRepoItemModel(
     val full_name: String,
     val owner: Owner,
     val html_url: String,
