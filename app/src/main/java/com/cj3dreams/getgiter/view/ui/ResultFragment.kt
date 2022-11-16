@@ -13,6 +13,9 @@ import com.cj3dreams.getgiter.view.adapter.ResultAdapter
 import com.cj3dreams.getgiter.vm.ResultViewModel
 import kotlinx.android.synthetic.main.fragment_result.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.content.Intent
+import android.net.Uri
+
 
 class ResultFragment : Fragment(), View.OnClickListener {
     private val resultViewModel: ResultViewModel by viewModel()
@@ -47,8 +50,8 @@ class ResultFragment : Fragment(), View.OnClickListener {
                     .show()
             }
             R.id.itemRepoCardView -> {
-                Toast.makeText(requireContext(), v.tag as String , Toast.LENGTH_SHORT)
-                    .show()
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(v.tag as String))
+                startActivity(browserIntent)
             }
         }
     }
