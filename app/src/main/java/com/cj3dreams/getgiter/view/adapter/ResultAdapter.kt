@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.cj3dreams.getgiter.R
+import com.cj3dreams.getgiter.model.entities.DownloadsEntity
 import com.cj3dreams.getgiter.model.gitrepo.GitRepoItemModel
 
 class ResultAdapter
@@ -40,7 +41,9 @@ class ResultAdapter
         holder.itemRepoCreatedAtTx.text = itemData.created_at
 
         holder.itemRepoDownloadTx.setOnClickListener(setOnClickListener)
-        holder.itemRepoDownloadTx.tag = "https://api.github.com/repos/${itemData.full_name}/zipball/master"
+        holder.itemRepoDownloadTx.tag =
+            DownloadsEntity(name = itemData.name, login = itemData.owner.login,
+            url = "https://api.github.com/repos/${itemData.full_name}/zipball/master")
 
         holder.itemRepoCardView.setOnClickListener(setOnClickListener)
         holder.itemRepoCardView.tag = itemData.html_url

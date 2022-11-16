@@ -11,7 +11,7 @@ interface GithubApiRequest {
 
     @Headers("Accept: application/vnd.github+json",
     "Authorization: Bearer $TOKEN")
-    @GET("/users/{username}/repos")
+    @GET("users/{username}/repos")
     suspend fun getRepoByUsername(@Path("username") username: String): Response<List<GitRepoItemModel>>
 
 }

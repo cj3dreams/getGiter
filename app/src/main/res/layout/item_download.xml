@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/itemDownloadCardView"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:clickable="true"
+    android:elevation="5dp"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    card_view:cardElevation="10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/itemDownloadRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/itemDownloadNameTx"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:textSize="20sp"
+                tools:text="TestingRepoTestingRepoTestingRepo" />
+
+            <TextView
+                android:id="@+id/itemDownloadUsernameTx"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemDownloadNameTx"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textSize="15sp"
+                tools:text="Description for 2 lines, It will work fine! Hmm looks good dfgdfgdfgdfgdfgdfgd" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/itemDownloadedAtTx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="15sp"
+            tools:text="11.11.2022" />
+
+        <TextView
+            android:text="Загружено"
+            android:layout_above="@+id/itemDownloadProgressBar"
+            android:id="@+id/itemIsDownloadedTx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="3dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:layout_below="@+id/itemDownloadRl"
+            android:id="@+id/itemDownloadProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="100"
+            />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

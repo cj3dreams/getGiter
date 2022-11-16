@@ -2,11 +2,16 @@ package com.cj3dreams.getgiter.di
 
 import android.app.Application
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.cj3dreams.getgiter.repo.DataRepositoryImpl
 import com.cj3dreams.getgiter.source.local.AppDb
+import com.cj3dreams.getgiter.source.local.DownloadsDao
+import com.cj3dreams.getgiter.source.local.LocalSource
+import com.cj3dreams.getgiter.source.local.LocalSourceImpl
 import com.cj3dreams.getgiter.source.remote.GithubApiRequest
 import com.cj3dreams.getgiter.source.remote.RemoteSourceImpl
 import com.cj3dreams.getgiter.utils.AppConstants.BASE_URL
+import com.cj3dreams.getgiter.vm.DownloadsViewModel
 import com.cj3dreams.getgiter.vm.ResultViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,14 +44,21 @@ val dataSourceModule = module {
             .fallbackToDestructiveMigration()
             .build()
 
+    fun provideDao(appDb: AppDb) = appDb.downloadsDao()
 
-    fun provideDataRepository(api: GithubApiRequest) =
-        DataRepositoryImpl(RemoteSourceImpl(api))
+    fun provideDataRepository(api: GithubApiRequest, dao: DownloadsDao) =
+        DataRepositoryImpl(RemoteSourceImpl(api), LocalSourceImpl(dao))
 
     single { provideDatabase(androidApplication()) }
-    single {provideDataRepository(get())}
+    single { provideDao(get()) }
+    single {provideDataRepository(get(), get())}
 
     viewModel {
         ResultViewModel(get())
+    }
+}
+val downloadsViewModel = module {
+    viewModel {
+        DownloadsViewModel(get())
     }
 }
