@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.cj3dreams.getgiter.view.ui.ResultFragment"
+        android:name="com.cj3dreams.gitgetter.view.ui.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action
@@ -16,12 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/downloadsFragment"
-        android:name="com.cj3dreams.getgiter.view.ui.DownloadsFragment"
+        android:name="com.cj3dreams.gitgetter.view.ui.DownloadsFragment"
         android:label="fragment_downloads"
         tools:layout="@layout/fragment_downloads" >
         <action
             android:id="@+id/action_downloadsFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            />
     </fragment>
 
 </navigation>

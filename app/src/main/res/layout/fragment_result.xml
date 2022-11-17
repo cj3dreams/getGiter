@@ -10,4 +10,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 
+
+ <RelativeLayout
+     android:layout_centerInParent="true"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:id="@+id/resultTypeRl">
+
+  <ImageView
+      android:id="@+id/resultImgView"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+      android:src="@drawable/ic_search_background"
+      android:layout_centerInParent="true"/>
+
+  <TextView
+      android:id="@+id/resultTx"
+      android:textSize="20sp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Введите запрос"
+      android:layout_below="@+id/resultImgView"
+      android:layout_centerHorizontal="true"/>
+
+ </RelativeLayout>
+
 </RelativeLayout>
