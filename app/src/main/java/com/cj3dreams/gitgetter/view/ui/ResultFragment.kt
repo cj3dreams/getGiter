@@ -1,4 +1,4 @@
-package com.cj3dreams.getgiter.view.ui
+package com.cj3dreams.gitgetter.view.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,16 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cj3dreams.getgiter.MainActivity
-import com.cj3dreams.getgiter.R
-import com.cj3dreams.getgiter.view.adapter.ResultAdapter
-import com.cj3dreams.getgiter.vm.ResultViewModel
+import com.cj3dreams.gitgetter.MainActivity
+import com.cj3dreams.gitgetter.R
+import com.cj3dreams.gitgetter.view.adapter.ResultAdapter
+import com.cj3dreams.gitgetter.vm.ResultViewModel
 import kotlinx.android.synthetic.main.fragment_result.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.content.Intent
 import android.net.Uri
-import com.cj3dreams.getgiter.model.entities.DownloadsEntity
-
+import com.cj3dreams.gitgetter.model.entities.DownloadsEntity
 
 class ResultFragment : Fragment(), View.OnClickListener {
     private val resultViewModel: ResultViewModel by viewModel()
@@ -28,7 +27,6 @@ class ResultFragment : Fragment(), View.OnClickListener {
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,8 +37,9 @@ class ResultFragment : Fragment(), View.OnClickListener {
         recyclerViewResult.layoutManager = LinearLayoutManager(requireContext())
         resultViewModel.repoByUserNameLiveData.observe(viewLifecycleOwner, {
             recyclerViewResult.adapter = ResultAdapter(it, this)
+            if (it.isNotEmpty()) resultTypeRl.visibility = View.GONE
+            else resultTypeRl.visibility = (View.VISIBLE).also { resultTx.text = "Пусто" }
         })
-
     }
 
     override fun onClick(v: View?) {
